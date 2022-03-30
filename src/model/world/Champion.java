@@ -10,8 +10,15 @@ public class Champion {
 	public int getCurrentHP() {
 		return currentHP;
 	}
-	public void setCurrentHP(int currentHP) {
-		this.currentHP = currentHP;
+	public void setCurrentHP(int current) {
+		if(current >= 0 && current<= this.maxHP) {
+			this.currentHP = current;
+		}else if(current<0) {
+			this.currentHP = 0;
+		}else {
+			this.currentHP = this.maxHP;
+		}
+		
 	}
 	public int getMana() {
 		return mana;
@@ -19,17 +26,17 @@ public class Champion {
 	public void setMana(int mana) {
 		this.mana = mana;
 	}
-	public int getMaxActionpointsPerTurn() {
-		return maxActionpointsPerTurn;
+	public int getMaxActionPointsPerTurn() {
+		return maxActionPointsPerTurn;
 	}
-	public void setMaxActionpointsPerTurn(int maxActionpointsPerTurn) {
-		this.maxActionpointsPerTurn = maxActionpointsPerTurn;
+	public void setMaxActionPointsPerTurn(int maxActionpointsPerTurn) {
+		this.maxActionPointsPerTurn = maxActionpointsPerTurn;
 	}
-	public int getCurrentActionPoint() {
-		return currentActionPoint;
+	public int getCurrentActionPoints() {
+		return currentActionPoints;
 	}
-	public void setCurrentActionPoint(int currentActionPoint) {
-		this.currentActionPoint = currentActionPoint;
+	public void setCurrentActionPoints(int currentActionPoint) {
+		this.currentActionPoints = currentActionPoint;
 	}
 	public int getAttackDamage() {
 		return attackDamage;
@@ -73,12 +80,12 @@ public class Champion {
 	private int maxHP;
 	private int currentHP;
 	private int mana;
-	private int maxActionpointsPerTurn;
-	private int currentActionPoint;
+	private int maxActionPointsPerTurn;
+	private int currentActionPoints;
 	private int attackDamage;
 	private int attackRange;
 	private int speed;
-	protected ArrayList<Ability> abilities;
+	private ArrayList<Ability> abilities;
 	private ArrayList<Effect>appliedEffects;
 	private Condition condition;
 	private Point location;
@@ -87,14 +94,18 @@ public class Champion {
 		this.name = name;
 		this.maxHP = maxHP;
 		this.mana = mana;
-		this.maxActionpointsPerTurn = maxActions;
+		this.maxActionPointsPerTurn = maxActions;
 		this.speed = speed;
 		this.attackRange = attackRange;
 		this.attackDamage = attackDamage;
 		this.currentHP = maxHP;
-		this.currentActionPoint = maxActions;
+		this.currentActionPoints = maxActions;
 		
-		this.abilities = new ArrayList<Ability>();
+		this.abilities = new ArrayList<Ability>(3);
+		this.appliedEffects = new ArrayList<Effect>();
+		this.condition = Condition.ACTIVE;
+		this.location = null;
+		
 	}
 	
 	

@@ -6,7 +6,9 @@ public class Cover {
 	private Point location;
 	public Cover(int x,int y) {
 		this.location = new Point(x,y);
-		this.currentHP = (int) Math.random()*900;
+		
+		Random rand = new Random();
+		this.currentHP = rand.nextInt(900) + 100;
 		
 	}
 	public int getCurrentHP() {

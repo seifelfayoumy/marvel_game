@@ -1,6 +1,6 @@
 package model.world;
 
-public enum DIRECTION {
+public enum Direction {
 	RIGHT,
 	LEFT,
 	UP,
